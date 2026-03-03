@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>מחשבון טרינום, אחוזים ושורש ריבועי אונליין בחינם</title>
+
+<meta name="description" content="מחשבון טרינום אונליין, מחשבון אחוזים ושורש ריבועי בחינם. פתרון משוואה ריבועית ax²+bx+c=0 בקלות ובמהירות.">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f6fb;color:#222;line-height:1.6}
+header{background:#1a1a2e;color:white;padding:20px;text-align:center}
+header h1{font-size:2rem;margin-bottom:8px}
+
+.container{max-width:1000px;margin:30px auto;padding:0 20px}
+nav{margin-bottom:30px;text-align:center}
+nav a{margin:0 10px;text-decoration:none;color:#4f46e5;font-weight:bold}
+
+.tool{background:white;padding:25px;margin-bottom:40px;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,.08)}
+.tool h2{margin-bottom:15px;color:#1a1a2e}
+input{width:100%;padding:10px;margin-bottom:10px;border:2px solid #ddd;border-radius:8px}
+button{padding:10px 15px;background:#4f46e5;color:white;border:none;border-radius:8px;font-weight:bold;cursor:pointer}
+.result{margin-top:10px;font-weight:bold;color:#4f46e5}
+
+.sidebar{margin-top:50px;background:white;padding:20px;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,.08)}
+.product{margin-bottom:15px}
+.product a{color:#ff6b00;font-weight:bold;text-decoration:none}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>מחשבונים אונליין בחינם</h1>
+<p>מחשבון טרינום, אחוזים ושורש ריבועי במקום אחד</p>
+</header>
+
+<div class="container">
+
+<nav>
+<a href="#trinomial">מחשבון טרינום</a> |
+<a href="#percent">מחשבון אחוזים</a> |
+<a href="#sqrt">מחשבון שורש ריבועי</a>
+</nav>
+
+<!-- טרינום -->
+<div class="tool" id="trinomial">
+<h2>מחשבון טרינום – פתרון משוואה ריבועית</h2>
+
+<input type="number" id="a" placeholder="a">
+<input type="number" id="b" placeholder="b">
+<input type="number" id="c" placeholder="c">
+<button onclick="solve()">חשב</button>
+<div class="result" id="triResult"></div>
+
+<p>
+מחשבון טרינום אונליין לפתרון משוואה ריבועית מהצורה ax² + bx + c = 0.
+אם חיפשת "מחשבון טרינום" או "פתרון משוואה ריבועית",
+כאן תוכל לקבל פתרון מהיר ומדויק כולל חישוב הדיסקרימיננטה.
+</p>
+</div>
+
+<!-- אחוזים -->
+<div class="tool" id="percent">
+<h2>מחשבון אחוזים אונליין</h2>
+
+<input type="number" id="percentValue" placeholder="כמה אחוז?">
+<input type="number" id="numberValue" placeholder="מתוך כמה?">
+<button onclick="calcPercent()">חשב</button>
+<div class="result" id="percentResult"></div>
+
+<p>
+מחשבון אחוזים לחישוב אחוז מתוך מספר.
+מתאים לחישובי הנחות, מבצעים וחישובים יומיומיים.
+אם חיפשת "מחשבון אחוזים" – הגעת למקום הנכון.
+</p>
+</div>
+
+<!-- שורש -->
+<div class="tool" id="sqrt">
+<h2>מחשבון שורש ריבועי</h2>
+
+<input type="number" id="sqrtInput" placeholder="הכנס מספר">
+<button onclick="calcSqrt()">חשב</button>
+<div class="result" id="sqrtResult"></div>
+
+<p>
+מחשבון שורש ריבועי אונליין לחישוב √ של כל מספר חיובי.
+מתאים לתלמידים ולשיעורי מתמטיקה.
+</p>
+</div>
+
+<!-- מוצרים -->
+<div class="sidebar">
+<h2>🛒 מוצרים מומלצים</h2>
+
+<div class="product">
+רובוט שוטף חלונות –
+<a href="https://s.click.aliexpress.com/e/_c4KHeFwF" target="_blank">לקנייה באליאקספרס</a>
+</div>
+
+<div class="product">
+אוזניות אלחוטיות לספורט –
+<a href="https://s.click.aliexpress.com/e/_c3HDSAzd" target="_blank">לקנייה באליאקספרס</a>
+</div>
+
+<div class="product">
+צמיד Apple Watch –
+<a href="https://s.click.aliexpress.com/e/_c39r7x9t" target="_blank">לקנייה באליאקספרס</a>
+</div>
+
+</div>
+
+</div>
+
+<script>
+function solve(){
+let a=parseFloat(document.getElementById("a").value);
+let b=parseFloat(document.getElementById("b").value);
+let c=parseFloat(document.getElementById("c").value);
+let result=document.getElementById("triResult");
+
+if(isNaN(a)||isNaN(b)||isNaN(c)){result.innerHTML="הכנס ערכים תקינים";return;}
+let d=b*b-4*a*c;
+if(d<0){result.innerHTML="אין פתרון ממשי";}
+else{
+let x1=(-b+Math.sqrt(d))/(2*a);
+let x2=(-b-Math.sqrt(d))/(2*a);
+result.innerHTML="x₁ = "+x1.toFixed(3)+" , x₂ = "+x2.toFixed(3);
+}
+}
+
+function calcPercent(){
+let p=parseFloat(document.getElementById("percentValue").value);
+let n=parseFloat(document.getElementById("numberValue").value);
+let result=document.getElementById("percentResult");
+
+if(isNaN(p)||isNaN(n)){result.innerHTML="הכנס ערכים";return;}
+result.innerHTML=(p/100*n).toFixed(2);
+}
+
+function calcSqrt(){
+let n=parseFloat(document.getElementById("sqrtInput").value);
+let result=document.getElementById("sqrtResult");
+
+if(isNaN(n)||n<0){result.innerHTML="מספר לא תקין";return;}
+result.innerHTML=Math.sqrt(n).toFixed(4);
+}
+</script>
+
+</body>
+</html>
